@@ -39,7 +39,7 @@ function index() {
           })}
         </div>
         </div>
-        <div className='flex mt-[150px] gap-[55px]'>
+        <div className='flex flex-wrap mt-[150px] gap-y-[150px] gap-x-[40px]'>
           {products?.map((e,i) => {
                return <ProductCard key={i} data={e}/>
           })}
