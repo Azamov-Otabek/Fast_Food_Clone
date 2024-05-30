@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Drawer } from 'antd';
 import { useOrderStore } from '../../store/orders';
 import { ToastContainer, toast } from 'react-toastify';
-import { QRCODE } from '../ui';
+import {QRMODAL} from '../'
+
+
 const App = ({orders}) => {
   const [tablenum, settablenum] = useState(0)
   const {createOrders, resetOrders} = useOrderStore();
@@ -45,8 +47,8 @@ const App = ({orders}) => {
     <>
       <ToastContainer/>
       <Drawer style={{background: '#e5e5e5'}} closeIcon={false} mask={false} open={orders.length && true}>
-          {open && <QRCODE/>}
-          <div className='flex flex-col gap-[20px] mt-[100px]'>
+          <QRMODAL/>
+          <div className='flex flex-col gap-[20px] mt-[50px]'>
               {orders.map((item, index) => {
                   return (
                   <div key={index} className='flex w-[300px] h-[120px] bg-[white] rounded-xl px-[23px] py-[20px] gap-[20px] items-center'>
@@ -64,7 +66,7 @@ const App = ({orders}) => {
               })}
           </div>
           
-          {orders.length > 0 && <div className='p-[28px] w-[286px] bg-[white] mt-[217px] rounded-xl'>
+          {orders.length > 0 && <div className='p-[28px] w-[286px] bg-[white] mt-[57px] rounded-xl'>
               <input onChange={(e) => settablenum(e.target.value)} type="number" className='w-full h-[40px] text-[18px] outline-none mb-[20px] border p-[5px]' placeholder='Enter your table number' />
               <div className='flex justify-between'>
                 <h2 className='font-semibold text-[18px] capitalize text-[#00000058]'>Subtotal:</h2>
