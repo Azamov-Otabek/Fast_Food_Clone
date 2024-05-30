@@ -9,7 +9,7 @@ const App = ({orders}) => {
   const [open, setOpen] = useState(false)
   let pricec = 0
   orders.forEach(e => {
-    pricec += (e?.price - (e?.price / 100 * e?.discount) ) * e?.count
+    pricec += (e?.price - (e?.price / 100 * (e?.discount || 0) ) ) * e?.count
   });
 
   async function createOrder(){
@@ -55,7 +55,7 @@ const App = ({orders}) => {
                       <h2 className='font-bold text-[22px] capitalize mb-[5px]'>{item?.title}</h2>
                       <div className='flex gap-[20px]'>
                       <p className='font-medium text-[18px]'>{item?.count}x</p>
-                      <p className='font-medium text-[18px]'>{(item?.price - (item?.price / 100 * item?.discount) )   * item?.count} so'm</p>
+                      <p className='font-medium text-[18px]'>{(item?.price - (item?.price / 100 * (item?.discount || 0)) )   * item?.count} so'm</p>
                       </div>
 
                     </div>
