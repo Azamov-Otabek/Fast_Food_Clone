@@ -13,8 +13,8 @@ function index() {
     },
     {
       title: "Table number",
-      dataIndex: "table_num",
-      key: "table_num",
+      dataIndex: "table_number",
+      key: "table_number",
     },
     {
       title: "Worker name",
@@ -54,13 +54,14 @@ function index() {
       limit: 999,
       worker_id: JSON.parse(localStorage.getItem("worker_id")),
     };
+    console.log(payload);
     const response = await getOrders(payload);
     if (response.status == 200) {
       const datas = response.data.orders.map((e, i )=> {
         return {
             index: i + 1, 
             id: e.id,
-            table_num: e.table_num,
+            table_number: e.table_number,
             worker_name: e.worker_name,
             createdAt: e.createdAt.slice(0, 19),
             products: e.products,

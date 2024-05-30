@@ -22,6 +22,16 @@ export const useProductStore = create((set) => ({
     } catch (error) {
       return error;
     }
-  }
+  },
+  getProductSearch: async (payload) =>{
+    try {
+      const response = await http.post(`/product/search`, payload);
+      if(response.status == 200){
+        set({ products: response.data.products});
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }));
 
